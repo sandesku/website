@@ -13,6 +13,11 @@ export default function Application() {
     const [isError, setIsError] = React.useState(false);
     const [navType, setNavType] = React.useState("nav");
 
+    React.useEffect(() => {
+        getArticleList();
+        setIsLoading(false);
+    }, [isLoading]);
+
     const getArticleList = async() =>{
         try{
             const response = await hostService.getArticleList();
@@ -24,10 +29,20 @@ export default function Application() {
         }
     }
 
-    React.useEffect(() => {
-        getArticleList();
-        setIsLoading(false);
-    }, [isLoading]);
+    const handleOnSearch = (event) => {
+        let value = event.target.value.toLowerCase();
+        let filteredArticleList = articleList.filter((article) => {
+            return article.headline.toLowerCase().search(value) !== -1;
+        });
+        setFilteredArticleList(filteredArticleList);
+    }
+
+    const handleOnClick = () => {
+        setFilteredArticleList(articleList);
+        if(window.innerWidth <= 1000){
+            setNavType("nav");
+        }
+    }
 
     const slideNav = () =>{
         if(window.innerWidth <= 1000){
@@ -38,21 +53,6 @@ export default function Application() {
             }
         }
     };
-
-    const hideNav = () =>{
-        if(window.innerWidth <= 1000){
-            setNavType("nav");
-        }
-    };
-
-    const handleOnSearch = (event) => {
-        let value = event.target.value.toLowerCase();
-        let filteredArticleList = articleList.filter((article) => {
-            return article.headline.toLowerCase().search(value) !== -1;
-        });
-        setFilteredArticleList(filteredArticleList);
-        hideNav();
-    }
 
     if(isLoading){
         return (
@@ -65,7 +65,7 @@ export default function Application() {
     if(isError){
         return (
             <div id = "div-error">
-                Sorry for the Inconvienvce. We are facing downtime...
+                <p>Sorry for the Inconvienvce. We are facing downtime...</p>
             </div>
         );
     }
@@ -76,10 +76,10 @@ export default function Application() {
                 <Nav data = {articleList} slideNav = {slideNav}></Nav>
             </nav>
             <header id = "header">
-                <Header handleOnChange = {handleOnSearch} slideNav = {slideNav} hideNav = {hideNav}></Header>
+                <Header handleOnChange = {handleOnSearch} slideNav = {slideNav} handleOnClick = {handleOnClick}></Header>
             </header>
             <section id = "section">
-                <Section data = {filteredArticleList} hideNav = {hideNav}></Section>
+                <Section data = {filteredArticleList} handleOnClick = {handleOnClick}></Section>
             </section>
         </Router>
     )

@@ -20,7 +20,7 @@
   float: left;
   font-size: 25px;
   color:black;
-  margin: 8px;
+  margin: 8px 15px;
 }
 
 #header-search {
@@ -46,5 +46,8 @@
   }
   #header-button{
     display: block;
+  }
+  #header-link {
+    margin: 8px;
   }
 }

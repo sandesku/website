@@ -4,7 +4,7 @@ import "./card.css"
 export default function Card(props){
 
     const cardlist = props.data.map((article, index) =>
-        <Link className="card-link" to={article.code} onClick = {props.hideNav}>
+        <Link className="card-link" to={article.code} onClick = {props.handleOnClick}>
             <h4>{article.headline}</h4>
             <p>{article.overview}</p>
         </Link>
@@ -17,7 +17,11 @@ export default function Card(props){
             </div>
         )
     }else{
-        return <h1>No Match Found</h1>
+        return (
+            <div id = "no-match-found">
+                <h1>No Match Found</h1>
+            </div>
+        )
     }
 
 }

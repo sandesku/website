@@ -34,7 +34,7 @@
 }
 
 #div-error {
-    text-align: center;
+    margin: 20% 35%;
 }
 
 /* If the screen size is 1000px wide or less, hide the element */
@@ -44,11 +44,18 @@
     }
     
     #slide {
-        width: 50%;
+        width: 30%;
     }
 
     #section {
         margin-left:0%;
         width:100%;
+    }
+}
+
+/* If the screen size is 750px wide or less, hide the element */
+@media screen and (max-width: 650px) {
+    #slide {
+        width: 50%;
     }
 }

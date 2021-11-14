@@ -15,6 +15,7 @@ export default function Section(props){
                     <Article></Article>
                 </Route>
 			</Switch>
+            <footer></footer>
         </div>
     )
 }

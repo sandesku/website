@@ -6,9 +6,9 @@ export default function Header(props){
     return (
         <div id="header-div">
             <button id="header-button" onClick = {props.slideNav}>☰</button>
-            <Link id="header-link" to="/" onClick = {props.hideNav}>Website</Link>
+            <Link id="header-link" to="/" onClick = {props.handleOnClick}>Website</Link>
             <div id="header-search">
-                <Search handleOnChange = {props.handleOnChange} hideNav = {props.hideNav}></Search>
+                <Search handleOnChange = {props.handleOnChange} handleOnClick = {props.handleOnClick}></Search>
             </div>
         </div>
     )

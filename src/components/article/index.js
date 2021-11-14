@@ -30,7 +30,6 @@ export default function Article() {
     return(
         <div>
             <h1>{article.headline}</h1>
-            <footer></footer>
         </div>
     );
 };

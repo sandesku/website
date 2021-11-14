@@ -6,12 +6,12 @@ export default function Search(props){
 
     const handleSearchOnClick = (event) =>{
         history.push("/");
-        props.hideNav();
+        props.handleOnClick();
     };
 
     return(
         <form id = "search-form" onClick = {handleSearchOnClick}>
-            <input id = "search-form-input" type="text" placeholder="Search..." name="search" onChange={props.handleOnChange}/>
+            <input id = "search-form-input" type="search" placeholder="Search..." name="search" onChange={props.handleOnChange}/>
         </form>
     );
 }
