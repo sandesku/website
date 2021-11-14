@@ -1,0 +1,54 @@
+#header{
+    width: 100%;
+    height:50px;
+    position: fixed;
+}
+
+#nav {
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    margin-top: 50px;
+    display: block;
+}
+
+#slide {
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    margin-top: 50px;
+    display: block;
+}
+
+#section {
+    width: 80%;
+    float: left;
+    margin-left:20%;
+    margin-top: 50px;
+}
+
+#div-loading {
+    text-align: center;
+}
+
+#div-error {
+    text-align: center;
+}
+
+/* If the screen size is 1000px wide or less, hide the element */
+@media screen and (max-width: 1000px) {
+    #nav {
+        display: none;
+    }
+    
+    #slide {
+        width: 50%;
+    }
+
+    #section {
+        margin-left:0%;
+        width:100%;
+    }
+}

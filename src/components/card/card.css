@@ -1,0 +1,42 @@
+#card-div {
+    width: 100%;
+}
+
+.card-link {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 24%;
+    height: 200px;
+    float: left;
+    margin: 0.5%;
+    text-decoration: none;
+    color:black;
+}
+
+h4 {
+    padding: 0px 10px;
+}
+
+p {
+    padding: 0px 10px;
+}
+  
+.card-link:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* If the screen size is 1000px wide or less, hide the element */
+@media screen and (max-width: 1000px) {
+    .card-link {
+        width: 48%;
+        margin: 1%;
+    }
+}
+
+/* If the screen size is 500px wide or less, hide the element */
+@media screen and (max-width: 500px) {
+    .card-link {
+        width: 98%;
+        margin: 1%;
+    }
+}

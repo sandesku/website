@@ -1,0 +1,50 @@
+#header-div {
+  width: 100%;
+  height:50px;
+  background-color:#B4D9E3;
+}
+
+#header-button {
+  float: left;
+  border: none;
+  font-size: 25px;
+  background-color:#B4D9E3;
+  color: black;
+  margin: 8px;
+  cursor: pointer;
+  display: none;
+}
+
+#header-link {
+  text-decoration: none;
+  float: left;
+  font-size: 25px;
+  color:black;
+  margin: 8px;
+}
+
+#header-search {
+  float: right;
+  margin-right: 25%;
+  margin-top: 3.5px;
+  width: 50%;
+  height: 40px;
+}
+
+#header-button:hover {
+  color: white;
+}
+
+#header-link:hover {
+  color: white;
+}
+
+/* If the screen size is 600px wide or less, hide the element */
+@media screen and (max-width: 1000px) {
+  #header-search {
+    margin-right: 10%;
+  }
+  #header-button{
+    display: block;
+  }
+}
