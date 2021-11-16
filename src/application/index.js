@@ -4,6 +4,7 @@ import React from "react"
 import Header from "../components/header";
 import Nav from "../components/nav";
 import Section from '../components/section';
+import Footer from '../components/footer';
 import "./application.css";
 
 export default function Application() {
@@ -81,6 +82,9 @@ export default function Application() {
             <section id = "section">
                 <Section data = {filteredArticleList} handleOnClick = {handleOnClick}></Section>
             </section>
+            <footer id = "footer">
+                <Footer></Footer>
+            </footer>
         </Router>
     )
 }

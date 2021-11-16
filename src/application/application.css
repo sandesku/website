@@ -29,6 +29,14 @@
     margin-top: 50px;
 }
 
+#footer {
+    width: 80%;
+    height: 100px;
+    float: left;
+    background-color:#F2F0CE;
+    margin-left:20%;
+}
+
 #div-loading {
     text-align: center;
 }
@@ -50,6 +58,15 @@
     #section {
         margin-left:0%;
         width:100%;
+    }
+
+    #footer {
+        margin-left:0%;
+        width:100%;
+    }
+
+    #div-error {
+        margin: 50% 5%;
     }
 }
 

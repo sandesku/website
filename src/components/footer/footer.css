@@ -1,0 +1,21 @@
+#div-footer {
+    padding-top: 30px;
+    font-size: 15px;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: black;
+    margin: 12.5%;
+}
+
+#footer-para {
+    text-align: center;
+}
+
+/* If the screen size is 1000px wide or less, hide the element */
+@media screen and (max-width: 1000px) {
+    .footer-link {
+        margin: 8%;
+    }
+}
