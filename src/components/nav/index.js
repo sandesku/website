@@ -7,7 +7,7 @@ export default function Nav(props) {
     )
 
     return (
-        <div>
+        <div id = "nav-div">
             {navlist}
         </div>
     );

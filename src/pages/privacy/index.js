@@ -7,10 +7,10 @@ export default function Privacy() {
                 <h1>Privacy Policy</h1>
             </div>
             <div id = "privacy-para">
-                <p>My name is Sandesh Kumar.</p>
-                <p>I am a software developer having five year of extensive experience in developing software for oracle, indiabulls and rebelfoods.</p>
-                <p>I done my graduation from National Institute of Technology Bhopal (NIT-Bhopal), B.Tech, Computer Science in 2016.</p>
-                <p>I want to provide a good quality solution for software development problems.</p>
+                <p>I do not collect any kind of user information nor share any user inforamation to any third party vender.</p>
+                <p>I use Google AdSense Advertising on my website. Google, as a third party vendor, uses cookies to serve ads on my site.</p>
+                <p>Google's use of the DART cookie enables it to serve ads to our users based on their visit to my site and other sites on the Internet.</p>
+                <p>Users may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy.</p>
             </div>
         </div>
     );
