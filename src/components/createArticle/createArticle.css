@@ -1,0 +1,41 @@
+#create-article {
+    width: 100%;
+}
+
+#headline-input {
+    width: 95%;
+    font-size: 20px;
+    margin: 15px;
+    padding: 10px;
+}
+
+#overview-input {
+    width: 95%;
+    font-size: 15px;
+    margin: 15px;
+    padding: 10px;
+}
+
+#article-body-label {
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+#add-button {
+    float: right;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+#conclusion-input {
+    width: 95%;
+    font-size: 15px;
+    margin: 15px;
+    padding: 10px;
+}
+
+#submit-button {
+    font-size: 20px;
+    float: left;
+    margin: 15px 40%;
+}

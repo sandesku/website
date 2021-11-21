@@ -8,7 +8,7 @@ export default function Contact() {
             </div>
             <div id = "contact-para">
                 <p>Feel free to reach me at <i>sandesh.sanku.kumar@gmail.com</i>  for any query.</p>
-                <p>I will be happy to assit you.</p>
+                <p>I will be happy to assist you.</p>
             </div>
         </div>
     );
