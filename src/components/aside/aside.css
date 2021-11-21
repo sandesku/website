@@ -1,6 +1,7 @@
 #aside-div {
     width: 25%;
     float: left;
+    display: none;
 }
 
 /* If the screen size is 600px wide or less, hide the element */

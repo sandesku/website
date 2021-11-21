@@ -2,6 +2,7 @@ import * as hostService from "../../services/hostService";
 import CreateArticleBody from "../createArticleBody";
 import { useHistory } from "react-router-dom";
 import { useParams } from 'react-router';
+import Exception from "../exception";
 import React from 'react';
 import "./updateArticle.css";
 
@@ -9,11 +10,12 @@ export default function UpdateArticle() {
     let history = useHistory();
     let {code} = useParams();
 
+    const [exception, setException] = React.useState('');
     const [isLoading, setIsLoading] = React.useState(true);
     const [article, setArticle] = React.useState({
         headline:"",
         overview:"",
-        bodyList:[
+        articleBodyList:[
             {
                 title:"",
                 content:"",
@@ -31,7 +33,11 @@ export default function UpdateArticle() {
     const getArticle = async(code) =>{
         try{
             const response = await hostService.getArticle(code);
-            setArticle(response.data.data);
+            if(response.data.code){
+                setException(response.data.message);
+              }else{
+                setArticle(response.data.data);
+              }
         }catch (error) {
             console.error('ERROR', error);
         }
@@ -40,7 +46,11 @@ export default function UpdateArticle() {
     const updateArticle = async(body) =>{
         try{
           const response = await hostService.updateArticle(body);
-          history.push("/" + response.data.data);
+          if(response.data.code===0){
+            history.push("/" + response.data.data);
+          }else{
+            setException(response.data.message);
+          }
         }catch (error) {
           console.error('ERROR', error);
         }
@@ -52,9 +62,8 @@ export default function UpdateArticle() {
     }
 
     const handleArticleBodyOnBlur = (index, event) => {
-        let bodyList = [...article.bodyList];
-        bodyList[index][event.target.name] = event.target.value;
-        //setArticle(values => ({...values, [bodyList]: bodyList}))
+        let articleBodyList = [...article.articleBodyList];
+        articleBodyList[index][event.target.name] = event.target.value;
     }
 
 
@@ -71,6 +80,10 @@ export default function UpdateArticle() {
         return (<div>Loading...</div>)
     }
 
+    if(exception){
+        return(<Exception message = {exception} setException = {setException}></Exception>);
+    }
+
     return (
         <div id = "create-article">
             <form id = "create-article-form" onSubmit={handleOnSubmit}>
@@ -78,7 +91,7 @@ export default function UpdateArticle() {
                 <textarea id = "overview-input" placeholder="overview" rows="5" name="overview" form="create-article-form" defaultValue={article.overview} onBlur={handleOnBlur} required/>
                 <label id = "article-body-label">Create Article Body</label>
                 <input id = "add-button" type='button' value='+' onClick={handleAddOnClick}/>
-                <CreateArticleBody bodyList = {article.bodyList} handleOnBlur = {handleArticleBodyOnBlur}></CreateArticleBody>
+                <CreateArticleBody articleBodyList = {article.articleBodyList} handleOnBlur = {handleArticleBodyOnBlur}></CreateArticleBody>
                 <textarea id = "conclusion-input" placeholder="conclusion" rows="5" name="conclusion" form="create-article-form" defaultValue={article.conclusion} onBlur={handleOnBlur} required/>
                 <input id = "submit-button" type="submit" value = 'update article'/>
             </form>

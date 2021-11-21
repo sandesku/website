@@ -1,16 +1,18 @@
 import * as hostService from "../../services/hostService";
 import { useHistory } from "react-router-dom";
 import CreateArticleBody from "../createArticleBody";
+import Exception from "../exception";
 import React from 'react';
 import "./createArticle.css";
 
 export default function CreateArticle() {
     let history = useHistory();
 
+    const [exception, setException] = React.useState('');
     const [article, setArticle] = React.useState({
         headline:"",
         overview:"",
-        bodyList:[
+        articleBodyList:[
             {
                 title:"",
                 content:"",
@@ -23,7 +25,11 @@ export default function CreateArticle() {
     const createArticle = async(body) =>{
         try{
           const response = await hostService.createArticle(body);
-          history.push("/" + response.data.data);
+          if(response.data.code===0){
+            history.push("/" + response.data.data);
+          }else{
+            setException(response.data.message);
+          }
         }catch (error) {
           console.error('ERROR', error);
         }
@@ -35,9 +41,8 @@ export default function CreateArticle() {
     }
 
     const handleArticleBodyOnBlur = (index, event) => {
-        let bodyList = [...article.bodyList];
-        bodyList[index][event.target.name] = event.target.value;
-        //setArticle(values => ({...values, [bodyList]: bodyList}))
+        let articleBodyList = [...article.articleBodyList];
+        articleBodyList[index][event.target.name] = event.target.value;
     }
 
 
@@ -50,6 +55,10 @@ export default function CreateArticle() {
         createArticle(article);
     }
 
+    if(exception){
+        return(<Exception message = {exception} setException = {setException}></Exception>);
+    }
+
     return (
         <div id = "create-article">
             <form id = "create-article-form" onSubmit={handleOnSubmit}>
@@ -57,7 +66,7 @@ export default function CreateArticle() {
                 <textarea id = "overview-input" placeholder="overview" rows="5" name="overview" form="create-article-form" defaultValue={article.overview} onBlur={handleOnBlur} required/>
                 <label id = "article-body-label">Create Article Body</label>
                 <input id = "add-button" type='button' value='+' onClick={handleAddOnClick}/>
-                <CreateArticleBody bodyList = {article.bodyList} handleOnBlur = {handleArticleBodyOnBlur}></CreateArticleBody>
+                <CreateArticleBody articleBodyList = {article.articleBodyList} handleOnBlur = {handleArticleBodyOnBlur}></CreateArticleBody>
                 <textarea id = "conclusion-input" placeholder="conclusion" rows="5" name="conclusion" form="create-article-form" defaultValue={article.conclusion} onBlur={handleOnBlur} required/>
                 <input id = "submit-button" type="submit" value = 'create article'/>
             </form>
