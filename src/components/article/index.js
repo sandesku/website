@@ -37,8 +37,10 @@ export default function Article() {
     }
 
     React.useEffect(() => {
-        getArticle(code);
-        setIsLoading(false);
+        if(isLoading){
+            getArticle(code);
+            setIsLoading(false);
+        }
     }, [isLoading, code]);
 
     if(isLoading){

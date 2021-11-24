@@ -16,8 +16,10 @@ export default function Application() {
     const [navType, setNavType] = React.useState("nav");
 
     React.useEffect(() => {
-        getArticleList();
-        setIsLoading(false);
+        if(isLoading){
+            getArticleList();
+            setIsLoading(false);
+        }
     }, [isLoading]);
 
     const getArticleList = async() =>{
@@ -59,21 +61,12 @@ export default function Application() {
         }
     };
 
-    if(isLoading){
-        return (
-            <div id = "div-loading">
-                Loading...
-            </div>
-        );
+    if(exception){
+        return(<Exception message = {exception} setException = {setException}></Exception>);
     }
 
-    if(exception){
-        return(
-            <div>
-                <Exception message = {exception} setException = {setException}></Exception>
-                <div></div>
-            </div>
-        );
+    if(isLoading){
+        return (<div id = "div-loading">Loading...</div>);
     }
 
     return(

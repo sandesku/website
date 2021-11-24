@@ -2,6 +2,7 @@ import * as hostService from "../../services/hostService";
 import { useHistory } from "react-router-dom";
 import CreateArticleBody from "../createArticleBody";
 import Exception from "../exception";
+import Login from "../login";
 import React from 'react';
 import "./createArticle.css";
 
@@ -9,6 +10,7 @@ export default function CreateArticle() {
     let history = useHistory();
 
     const [exception, setException] = React.useState('');
+    const [user, setUser] = React.useState();
     const [article, setArticle] = React.useState({
         headline:"",
         overview:"",
@@ -22,9 +24,9 @@ export default function CreateArticle() {
         conclusion:""
     });
 
-    const createArticle = async(body) =>{
+    const createArticle = async(article) =>{
         try{
-          const response = await hostService.createArticle(body);
+          const response = await hostService.createArticle(article, user);
           if(response.data.code===0){
             history.push("/" + response.data.data);
           }else{
@@ -57,6 +59,10 @@ export default function CreateArticle() {
 
     if(exception){
         return(<Exception message = {exception} setException = {setException}></Exception>);
+    }
+
+    if(!user){
+        return(<Login setUser = {setUser}></Login>);
     }
 
     return (
