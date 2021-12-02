@@ -46,14 +46,14 @@
     margin: 20% 35%;
 }
 
-/* If the screen size is 1000px wide or less, hide the element */
-@media screen and (max-width: 1000px) {
+/* If the screen size is 768px wide or less, hide the element */
+@media screen and (max-width: 800px) {
     #nav {
         display: none;
     }
     
     #slide {
-        width: 30%;
+        width: 35%;
     }
 
     #section {
@@ -72,7 +72,7 @@
 }
 
 /* If the screen size is 750px wide or less, hide the element */
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 400px) {
     #slide {
         width: 50%;
     }

@@ -8,7 +8,7 @@
 }
 
 /* If the screen size is 600px wide or less, hide the element */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
     #article-div {
         width: 100%;
     }

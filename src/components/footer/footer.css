@@ -3,10 +3,24 @@
     font-size: 15px;
 }
 
-.footer-link {
+#footer-about {
     text-decoration: none;
     color: black;
-    margin: 12.5%;
+    margin-left: 10%;
+    float: left;
+}
+
+#footer-contact {
+    text-decoration: none;
+    color: black;
+    margin-left: 30%;
+}
+
+#footer-privacy {
+    text-decoration: none;
+    color: black;
+    margin-right: 10%;
+    float: right;
 }
 
 #footer-para {
@@ -14,8 +28,15 @@
 }
 
 /* If the screen size is 1000px wide or less, hide the element */
-@media screen and (max-width: 1000px) {
-    .footer-link {
-        margin: 8%;
+@media screen and (max-width: 800px) {
+    #footer-contact {
+        margin-left: 25%;
+    }
+}
+
+/* If the screen size is 1000px wide or less, hide the element */
+@media screen and (max-width: 400px) {
+    #footer-contact {
+        margin-left: 10%;
     }
 }
