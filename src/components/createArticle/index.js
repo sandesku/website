@@ -49,7 +49,7 @@ export default function CreateArticle() {
 
 
     const handleAddOnClick = () => {
-        setArticle(values => ({...values, bodyList:[...values.bodyList, {title: '',content: '',statement: ''}]}))
+        setArticle(values => ({...values, articleBodyList:[...values.articleBodyList, {title: '',content: '',statement: ''}]}))
     }
 
     const handleOnSubmit = (e) => {
