@@ -11,6 +11,7 @@
     overflow: auto;
     margin-top: 50px;
     display: block;
+    background-color: ghostwhite;
 }
 
 #slide {
@@ -29,6 +30,14 @@
     margin-top: 50px;
 }
 
+#footer {
+    width: 80%;
+    height: 100px;
+    float: left;
+    background-color:#F2F0CE;
+    margin-left:20%;
+}
+
 #div-loading {
     text-align: center;
 }
@@ -37,24 +46,33 @@
     margin: 20% 35%;
 }
 
-/* If the screen size is 1000px wide or less, hide the element */
-@media screen and (max-width: 1000px) {
+/* If the screen size is 768px wide or less, hide the element */
+@media screen and (max-width: 800px) {
     #nav {
         display: none;
     }
     
     #slide {
-        width: 30%;
+        width: 35%;
     }
 
     #section {
         margin-left:0%;
         width:100%;
     }
+
+    #footer {
+        margin-left:0%;
+        width:100%;
+    }
+
+    #div-error {
+        margin: 50% 5%;
+    }
 }
 
 /* If the screen size is 750px wide or less, hide the element */
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 400px) {
     #slide {
         width: 50%;
     }

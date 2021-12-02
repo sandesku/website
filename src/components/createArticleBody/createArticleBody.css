@@ -1,0 +1,28 @@
+.create-article-body {
+    border-style: solid;
+    border-width: 1px;
+    width: 95%;
+    margin: 15px;
+    padding: 10px;
+}
+
+#title-input {
+    width: 96%;
+    font-size: 20px;
+    margin: 10px;
+    padding: 10px;
+}
+
+#content-input {
+    width: 96%;
+    font-size: 15px;
+    margin: 10px;
+    padding: 10px;
+}
+
+#statement-textarea {
+    width: 96%;
+    font-size: 15px;
+    margin: 10px;
+    padding: 10px;
+}

@@ -17,3 +17,11 @@ export const getArticleList = async() => {
 export const getArticle = async(code) => {
     return await host.get(Constant.ARTICLE_URL(code), Constant.INTERNAL_AUTH_HEADER);
 }
+
+export const createArticle = async(article, user) => {
+    return await host.post(Constant.CREATE_ARTICLE_URL, article, { headers : user});
+}
+
+export const updateArticle = async(user, article) => {
+    return await host.post(Constant.UPDATE_ARTICLE_URL, article, { headers : user});
+}

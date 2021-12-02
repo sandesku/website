@@ -1,15 +1,12 @@
-#article-div {
-    width: 100%;
+#aside-div {
+    width: 25%;
     float: left;
-}
-
-#headline {
-    margin: 10px;
+    display: none;
 }
 
 /* If the screen size is 600px wide or less, hide the element */
 @media screen and (max-width: 800px) {
-    #article-div {
-        width: 100%;
+    #aside-div {
+        display: none;
     }
 }

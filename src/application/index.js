@@ -1,31 +1,38 @@
 import {BrowserRouter as Router} from 'react-router-dom';
 import * as hostService from "../services/hostService"
-import React from "react"
 import Header from "../components/header";
 import Nav from "../components/nav";
 import Section from '../components/section';
+import Footer from '../components/footer';
+import Exception from "../components/exception"
+import React from "react"
 import "./application.css";
 
 export default function Application() {
     const [articleList, setArticleList] = React.useState([]);
     const [filteredArticleList, setFilteredArticleList] = React.useState(articleList);
     const [isLoading, setIsLoading] = React.useState(true);
-    const [isError, setIsError] = React.useState(false);
+    const [exception, setException] = React.useState('');
     const [navType, setNavType] = React.useState("nav");
 
     React.useEffect(() => {
-        getArticleList();
-        setIsLoading(false);
+        if(isLoading){
+            getArticleList();
+            setIsLoading(false);
+        }
     }, [isLoading]);
 
     const getArticleList = async() =>{
         try{
             const response = await hostService.getArticleList();
-            setArticleList(response.data.data);
-            setFilteredArticleList(response.data.data);
+            if(response.data.code===0){
+                setArticleList(response.data.data);
+                setFilteredArticleList(response.data.data);
+            }else{
+                setException(response.data.message);
+            }
         }catch (error) {
             console.error('ERROR', error);
-            setIsError(true);
         }
     }
 
@@ -54,20 +61,12 @@ export default function Application() {
         }
     };
 
-    if(isLoading){
-        return (
-            <div id = "div-loading">
-                Loading...
-            </div>
-        );
+    if(exception){
+        return(<Exception message = {exception} setException = {setException}></Exception>);
     }
 
-    if(isError){
-        return (
-            <div id = "div-error">
-                <p>Sorry for the Inconvienvce. We are facing downtime...</p>
-            </div>
-        );
+    if(isLoading){
+        return (<div id = "div-loading">Loading...</div>);
     }
 
     return(
@@ -81,6 +80,9 @@ export default function Application() {
             <section id = "section">
                 <Section data = {filteredArticleList} handleOnClick = {handleOnClick}></Section>
             </section>
+            <footer id = "footer">
+                <Footer></Footer>
+            </footer>
         </Router>
     )
 }
